@@ -1,34 +1,39 @@
 import java.util.Scanner;
 
 class BinarySearch {
-	public static void main (String args[]) {
+	public static int getlength() {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Array length:");
-        char inputNumber[] = scanner.nextLine().toCharArray();
-		int arrayLength = 0;
-		int position = 1;
-		for (int i = inputNumber.length - 1; i >=0 ; i--) {
-			arrayLength = arrayLength + ((int)inputNumber[i] - '0') * position;
-			position=position*10;
-		};
-		int a[] = new int[arrayLength];
+		int result = scanner.nextInt();
+		return result;
+	}
+	public static int[] getarray(int length) {
+		Scanner scanner = new Scanner(System.in);
+		int a[] = new int[length];
 		System.out.println("Array:");
-		for (int i = 0; i < arrayLength; i++) {
+		for (int i = 0; i < length; i++) {
 			a[i] = scanner.nextInt();
 		}
+		return a;
+	}
+	public static int getsoughtnumber() {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Sought number:");
-		int soughtNumber = scanner.nextInt();
+		int result = scanner.nextInt();
+		return result;
+	}
+	public static int position(int number, int array[]){		
 		int startPosition = 0;
-		int finishPosition = a.length - 1;
+		int finishPosition = array.length - 1;
 		int soughtPosition = -1;
 		int middlePosition;
 		while ((soughtPosition == -1) & (startPosition < finishPosition - 1))	{
 			middlePosition = startPosition + (finishPosition - startPosition)/2;
-			if (a[middlePosition] == soughtNumber)	{
+			if (array[middlePosition] == number)	{
 				soughtPosition = middlePosition;
 			}
 			else {
-				if (a[middlePosition] > soughtNumber) {
+				if (array[middlePosition] > number) {
 					finishPosition = middlePosition;
 				}
 				else
@@ -37,6 +42,12 @@ class BinarySearch {
 				}
 			}
 		}
-		System.out.println("Sought position " + soughtPosition);
+		return soughtPosition;
+	}
+	public static void main (String args[]) {
+		int arrayLength = getlength();
+		int a[] = getarray(arrayLength);
+		int soughtNumber = getsoughtnumber();
+		System.out.println("Sought position " + position(soughtNumber,a));
 	}
 }
