@@ -12,6 +12,12 @@ public class Main {
 	parking.showCurrentState();
 
 	Tank t34 = new Tank("Т-34");
+	t34.addOffRoadPlace("Поле");
+	t34.addOffRoadPlace("Овраг");
+	t34.addOffRoadPlace("Лес");
+	t34.addOffRoadPlace("Болото");
+	t34.addOffRoadPlace("Здание");
+	t34.addOffRoadPlace("Метро");
 
 	parking.park(t34);
 	parking.showCurrentState();
